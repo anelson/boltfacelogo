@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<project name="BoltFaceLogo" default="generate">
+    <property name="logo_colors" value="black;white" />
+    <property name="background_colors" value="clear;black;white" />
+    <property name="sizes" value="80x60;80x80;400x400;800x800;1280x1024;1600x1200;1920x1200" />
+
+    <property name="java_cmd" value="java" />
+    <property name="batik_path" value="c:\work\tools\batik-1.7" />
+    <property name="svg_path" value="${path::combine(project::get-base-directory(), 'bfl.svg')}" />
+    
+    <target name="generate">
+        <foreach item="String" in="${logo_colors}" delim=";" property="logo_color">
+            <foreach item="String" in="${background_colors}" delim=";" property="background_color">
+                <foreach item="String" in="${sizes}" delim=";" property="size">
+                    <if test="${logo_color != background_color}">
+                        <property name="separator" value="${string::index-of(size,'x')}" />
+                        <property name="width" value="${string::substring(size,0,separator)}" />
+                        <property name="height" value="${string::substring(size,int::parse(separator)+1,string::get-length(size)-int::parse(separator)-1)}" />
+
+                        <property name="filename" value="bfl_${logo_color}_logo_${background_color}_background_${width}x${height}.png" />
+
+                        <property name="output_path" value="${path::combine(project::get-base-directory(), filename)}" />
+
+                        <property name="bg_rgb" value="" />
+
+                        <if test="${background_color != 'clear'}">
+                            <if test="${background_color == 'black'}">
+                                <property name="bg_rgb" value="255.0.0.0" />
+                            </if>    
+                            <if test="${background_color == 'white'}">
+                                <property name="bg_rgb" value="255.255.255.255" />
+                            </if>
+
+                            <if test="${not property::exists('bg_rgb')}">
+                                <fail message="Don't know how to translate background color '${background_color}' into an ARGB value" />
+                            </if>
+                        </if>
+    
+                        <echo message="Generating ${output_path}..." />
+
+                        <exec program="${java_cmd}" verbose="false" workingdir="${project::get-base-directory()}">
+                            <arg value="-jar" /> <arg value="${batik_path}\batik-rasterizer.jar" />
+                            <arg value="-w" /> <arg value="${width}" />
+                            <arg value="-h" /> <arg value="${height}" />
+                            <arg value="-d" /> <arg file="${output_path}" />
+                            <arg value="-cssUser" /> <arg value="file:${logo_color}_logo.css" />
+                            <arg line="-bg ${bg_rgb}" if="${bg_rgb != ''}" />
+                            <arg file="${svg_path}" />
+                        </exec>
+                    </if>
+                </foreach>
+            </foreach>
+        </foreach>
+    </target>
+</project>

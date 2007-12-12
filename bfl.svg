@@ -1,0 +1,92 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="-0.5 -0.5 1 1">
+    <defs>
+        <style type="text/css">
+            <![CDATA[
+           /*.solidColor { fill: black; }*/
+           .maskShow { fill: white; }
+           .maskHide { fill: black; }
+           .maskHideBorder { fill: none; stroke: black; stroke-width: 0.02; }
+                ]]>
+        </style>
+
+        <g id="normalSizeLugPair">
+            <rect x="-0.0695" y="-0.4158" width="0.1390" height="0.8316" class="maskShow" />
+        </g>
+
+        <g id="lugPairWithExtractor">
+            <rect x="-0.0695" y="-0.4158" width="0.1390" height="0.8076" class="maskShow" />
+        </g>
+
+        <g id="boltFaceMaskComponents">
+            <!-- Draw the circle that forms the bolt face -->
+            <circle cx="0" cy="0" r="0.2915" class="maskShow" />
+        
+            <!-- Rectangles that form the height lugs -->
+            <g id="lugsAndExtractorClaw">
+                <!-- Top and bottom lugs -->
+                <use xlink:href="#normalSizeLugPair" />
+            
+                <!-- Left and right lugs -->
+                <g transform="rotate(90)">
+                    <use xlink:href="#normalSizeLugPair" />
+                </g>
+            
+                <!-- Top left and bottom right lugs -->
+                <!-- NB: Top left lug is the one with the extractor, so it's not as tall as the others on the top left side -->
+                <g transform="rotate(135)">
+                    <use xlink:href="#lugPairWithExtractor" />
+        
+                    <!-- Rectangular portion of extractor -->
+                    <rect x="-0.0358" y="0.2571" width="0.0716" height="0.101" class="maskHide" />
+                </g>
+        
+                <!-- Arc portion of extractor claw -->
+                <path d="M -0.2420,-0.0840
+                      A 0.2330,0.2330 0 0,1 -0.0820,-0.2443
+                      L -0.0493,-0.2093
+                      A 0.2330,0.2330 0 0,0 -0.2067,-0.0493
+                      z" class="maskHide" />
+            
+                <!-- Bottom left and top right lugs -->
+                <g transform="rotate(225)">
+                    <use xlink:href="#normalSizeLugPair" />
+                </g>
+            </g>
+        
+            <!-- Bolt face circle -->
+            <circle cx="0" cy="0" r="0.1788" class="maskHide" />
+        
+            <!-- Firing pin hole -->
+            <circle cx="0" cy="0" r="0.04" class="maskShow" />
+        
+            <!-- Extractor pin elements -->
+            <g transform="rotate(45)">
+                <!-- Border around extrator plunger hole -->
+                <circle cx="0.1788" cy="0" r="0.0628" class="maskShow" />
+        
+                <!-- Extractor pin hole -->
+                <circle cx="0.1788" cy="0" r="0.0265" class="maskHide" />
+            </g>
+        
+        
+            <!-- Circle around ends of the lugs to give them a rounded look -->
+            <circle cx="0" cy="0" r="0.4158" class="maskHideBorder" />
+        </g>
+
+        <mask id="boltFaceMask">
+            <use xlink:href="#boltFaceMaskComponents" />
+        </mask>
+
+    </defs>
+
+    <!-- Draw a solid rectangle to fill the viewport, and mask out the bolt face shape -->
+    <!--<use xlink:href="#boltFaceMaskComponents" />-->
+    <rect x="-50%" y="-50%" width="100%" height="100%" mask="url(#boltFaceMask)" class="solidColor" />
+</svg>
+

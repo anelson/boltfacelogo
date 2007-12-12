@@ -1,0 +1,132 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+    viewBox="-0.5 -0.5 1 1">
+    <defs>
+        <style type="text/css">
+            <![CDATA[
+	    
+      .black {
+        fill: black;
+      }
+
+      .white {
+        fill: white;
+                }
+      .orange {
+        fill: orange;
+                }
+
+      .blackBorder {
+        fill: none;
+        stroke: black;
+        stroke-width: 0.02;
+       }
+    ]]>
+        </style>
+    </defs>
+
+    <!-- Start with a background rendered black -->
+    <rect x="-0.5" y="-0.5" width="1" height="1" class="black" />
+
+    <!-- Draw the circle that forms the bolt face -->
+    <circle cx="0" cy="0" r="0.2915" class="white" />
+
+    <!-- Rectangles that form the height lugs -->
+
+        <!-- Top and bottom lugs -->
+        <rect x="-0.0695" y="-0.4158" width="0.1390" height="0.8316" class="white" />
+    
+        <!-- Left and right lugs -->
+        <g transform="rotate(90)">
+            <rect x="-0.0695" y="-0.4158" width="0.1390" height="0.8316" class="white" />
+        </g>
+    
+        <!-- Top left and bottom right lugs -->
+        <!-- NB: Top left lug is the one with the extractor, so it's not as tall as the others on the top left side -->
+        <g transform="rotate(135)">
+            <rect x="-0.0695" y="-0.4158" width="0.1390" height="0.8076" class="white" />
+
+            <!-- Rectangular portion of extractor -->
+            <rect x="-0.0358" y="0.2571" width="0.0716" height="0.101" class="black" />
+        </g>
+
+            <!-- Arc portion of extractor claw -->
+            <!--<path d="M -0.2303,-0.0723 A 0.1683,0.1683 0 0,1 -0.0720,-0.2310" fill="none" stroke="orange" stroke-width="0.0487" />-->
+            <!--<path d="M -0.2303,-0.0723 A 0.2330,0.2330 0 0,1 -0.0720,-0.2310" fill="none" stroke="orange" stroke-width="1%" /> -->
+            <path d="M -0.2420,-0.0840
+                  A 0.2330,0.2330 0 0,1 -0.0820,-0.2443
+                  L -0.0493,-0.2093
+                  A 0.2330,0.2330 0 0,0 -0.2067,-0.0493
+                  z" class="black" />
+    
+        <!-- Bottom left and top right lugs -->
+        <g transform="rotate(225)">
+            <rect x="-0.0695" y="-0.4158" width="0.1390" height="0.8316" class="white" />
+        </g>
+
+    <!-- Bolt face circle -->
+    <circle cx="0" cy="0" r="0.1788" class="black" />
+
+    <!-- Firing pin hole -->
+    <circle cx="0" cy="0" r="0.04" class="white" />
+
+    <!-- Extractor pin elements -->
+    <g transform="rotate(45">
+        <!-- Border around extrator plunger hole -->
+        <circle cx="0.1788" cy="0" r="0.0628" class="white" />
+
+        <!-- Extractor pin hole -->
+        <circle cx="0.1788" cy="0" r="0.0265" class="black" />
+    </g>
+
+
+    <!-- Circle around ends of the lugs to give them a rounded look -->
+    <circle cx="0" cy="0" r="0.4158" class="blackBorder" />
+
+    <g transform="translate(2.5,2.5)">
+        <!-- Rectangle at (x-1, y-2) -->
+        <rect x="-1" y="-2" width="1" height="1" class="whiteRect" />
+        <!-- Rectangle at (x-1, y+2) -->
+        <rect x="-1" y="2" width="1" height="1" class="whiteRect" />
+        <!-- Rectangle at (x-2, y+1) -->
+        <rect x="-2" y="1" width="1" height="1" class="whiteRect" />
+        <!-- Rectangle at (x-2, y-1) -->
+        <rect x="-2" y="-1" width="1" height="1" class="whiteRect" />
+        
+        <!-- Rectangle at (x+1, y-2) -->
+        <rect x="1" y="-2" width="1" height="1" class="whiteRect" />
+        <!-- Rectangle at (x+1, y+2) -->
+        <rect x="1" y="2" width="1" height="1" class="whiteRect" />
+        <!-- Rectangle at (x+2, y+1) -->
+        <rect x="2" y="1" width="1" height="1" class="whiteRect" />
+        <!-- Rectangle at (x+2, y-1) -->
+        <rect x="2" y="-1" width="1" height="1" class="whiteRect" />
+    </g>
+    
+
+    <g transform="translate(3,3) scale(1, -1)">
+        <!-- Draw the Sigma through the boxes-->
+        <path
+            d="M 2 1 
+               L 2 2 
+               L -2 2
+               L -2 1.75
+               L -0.5 0
+               L -2 -1.75
+               L -2 -2
+               L 2 -2
+               L 2 -1
+               "
+            class="sigmaLine" />
+    </g>
+    
+
+    <g transform="translate(2.5,2.5)">
+        <!-- Center, black rectangle-->
+        <rect x="0" y="0" width="1" height="1" class="blackRect" />
+    </g>
+</svg>
+
