@@ -1,6 +1,13 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!--
+SVG code Copyright (C) 2007 apocryph, released under the Creative Commons by-nc license version 3.0, available at
+http://creativecommons.org/licenses/by-nc/3.0/
+
+Bolt Face Logo is a registered trademark of AR-15.com LLC, and is reproduced in the SVG file without permission, endorsement, sponsorship or license of AR-15.com LLC.
+Use of the Bolt Face Logo is subject to US trademark law.
+-->
 <svg version="1.1"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -8,7 +15,7 @@
     <defs>
         <style type="text/css">
             <![CDATA[
-           /*.solidColor { fill: black; }*/
+           /*.solidColor { fill: black; }*/ /* This class is now defined in a user-defined stylesheet specified by the -userCss argument to batik */
            .maskShow { fill: white; }
            .maskHide { fill: black; }
            .maskHideBorder { fill: none; stroke: black; stroke-width: 0.02; }
